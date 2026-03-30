@@ -355,6 +355,94 @@ st.markdown("""
 """, unsafe_allow_html=True)
 
 
+# ── LIFE SCIENCES SECTION ─────────────────────────────────────────────────────
+st.markdown('<div id="life-sciences"></div>', unsafe_allow_html=True)
+st.markdown("""
+<div style="padding:72px 0 48px;">
+  <div style="font-size:11px;font-weight:700;letter-spacing:2px;color:#00c2e0;text-transform:uppercase;margin-bottom:12px;">Life Sciences & Healthcare</div>
+  <div style="font-size:clamp(28px,4vw,48px);font-weight:900;letter-spacing:-1.5px;line-height:1.1;margin:0 0 16px;color:#e8e8f0;">Why VAST for Life Sciences.</div>
+  <div style="font-size:17px;color:#5878a8;max-width:720px;line-height:1.7;">
+    Pharma, genomics, and clinical AI share a common infrastructure problem: petabyte-scale sensitive data, 
+    strict regulatory requirements, and GPU workloads that break public cloud economics. VAST solves all five.
+  </div>
+</div>
+""", unsafe_allow_html=True)
+
+col_ls1, col_ls2 = st.columns(2, gap="large")
+
+with col_ls1:
+    st.markdown("""
+    <div style="display:flex;flex-direction:column;gap:16px;">
+
+      <div style="background:#0a0e1f;border-left:4px solid #00c2e0;border-radius:0 12px 12px 0;padding:22px 24px;">
+        <div style="font-size:16px;font-weight:800;color:#e8e8f0;margin-bottom:8px;">1. Taming Unpredictable Cloud Costs & Data Gravity</div>
+        <div style="font-size:14px;color:#5878a8;line-height:1.7;margin-bottom:10px;">Generative AI requires always-on continuous GPU consumption, which breaks consumption-based cloud pricing — often exceeding initial estimates by 3–5×. RAG pipelines and embedding stores drive further egress costs.</div>
+        <div style="font-size:14px;color:#7090c0;line-height:1.7;"><strong style="color:#00c2e0;">VAST:</strong> Run open-source AI models locally on-premises. All-inclusive software — DataStore, DataCatalog, DataBase, DataSpace — in one platform. Proven 1.8× DRR, saving organizations millions over 10 years.</div>
+      </div>
+
+      <div style="background:#0a0e1f;border-left:4px solid #00c2e0;border-radius:0 12px 12px 0;padding:22px 24px;">
+        <div style="font-size:16px;font-weight:800;color:#e8e8f0;margin-bottom:8px;">2. Data Sovereignty & IP Protection</div>
+        <div style="font-size:14px;color:#5878a8;line-height:1.7;margin-bottom:10px;">Genomic data, drug compound libraries, and proprietary model weights are high-value IP. Hosting in public clouds introduces legal, jurisdictional, and competitive risk.</div>
+        <div style="font-size:14px;color:#7090c0;line-height:1.7;"><strong style="color:#00c2e0;">VAST:</strong> Generate insights natively — data never leaves the organization. Built-in governance, data protection, and cybersecurity for petabyte-scale oncology documents and multimodal health records.</div>
+      </div>
+
+      <div style="background:#0a0e1f;border-left:4px solid #00c2e0;border-radius:0 12px 12px 0;padding:22px 24px;">
+        <div style="font-size:16px;font-weight:800;color:#e8e8f0;margin-bottom:8px;">3. Low-Latency, High-Throughput Inference</div>
+        <div style="font-size:14px;color:#5878a8;line-height:1.7;margin-bottom:10px;">Drug discovery, lab automation, and QA require deterministic low-latency inference. Network round-trips to cloud regions introduce unacceptable variability for real-time clinical diagnostics.</div>
+        <div style="font-size:14px;color:#7090c0;line-height:1.7;"><strong style="color:#00c2e0;">VAST:</strong> High-performance core that unbottlenecks GPU deployments — scales to exabyte levels without crashing. Supports real-time clinical diagnostics and petabyte-scale medical imaging at the edge.</div>
+      </div>
+
+    </div>
+    """, unsafe_allow_html=True)
+
+with col_ls2:
+    st.markdown("""
+    <div style="display:flex;flex-direction:column;gap:16px;">
+
+      <div style="background:#0a0e1f;border-left:4px solid #10b981;border-radius:0 12px 12px 0;padding:22px 24px;">
+        <div style="font-size:16px;font-weight:800;color:#e8e8f0;margin-bottom:8px;">4. Eliminating RAG Pipeline Database Sprawl</div>
+        <div style="font-size:14px;color:#5878a8;line-height:1.7;margin-bottom:10px;">RAG on proprietary clinical trial reports or patent filings requires heavily integrated embedding stores — running dozens of separate vector databases in parallel becomes complex and expensive at scale.</div>
+        <div style="font-size:14px;color:#7090c0;line-height:1.7;"><strong style="color:#10b981;">VAST:</strong> One native vector store built into the platform — no separate Milvus or Pinecone. Vector embeddings as a column alongside standard metadata. Simultaneous semantic and metadata-filtered search in one query.</div>
+      </div>
+
+      <div style="background:#0a0e1f;border-left:4px solid #10b981;border-radius:0 12px 12px 0;padding:22px 24px;">
+        <div style="font-size:16px;font-weight:800;color:#e8e8f0;margin-bottom:8px;">5. GxP & EU AI Act Regulatory Compliance</div>
+        <div style="font-size:14px;color:#5878a8;line-height:1.7;margin-bottom:10px;">GxP and the EU AI Act require AI systems to be transparent, auditable, and reproducible with full visibility across the entire AI pipeline — difficult to achieve in continuously-updating managed cloud services.</div>
+        <div style="font-size:14px;color:#7090c0;line-height:1.7;"><strong style="color:#10b981;">VAST:</strong> Kubernetes-based DataEngine runs AI pipelines natively on the storage cluster — every step from ingest to inference is tightly controlled, monitored, and secured. Full audit trails for governance-heavy regulated environments.</div>
+      </div>
+
+      <div style="background:#052030;border:1px solid #00c2e0;border-radius:12px;padding:24px;">
+        <div style="font-size:13px;font-weight:700;letter-spacing:1.5px;color:#00c2e0;text-transform:uppercase;margin-bottom:16px;">Life Sciences Use Cases on VAST</div>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;">
+          <div style="background:#080c1e;border:1px solid #1e3060;border-radius:8px;padding:12px;text-align:center;">
+            <div style="font-size:20px;margin-bottom:4px;">🧬</div>
+            <div style="font-size:13px;font-weight:700;color:#e8e8f0;">Genomic RAG Engine</div>
+            <div style="font-size:12px;color:#5878a8;margin-top:4px;">FASTQ → Clinical Insights</div>
+          </div>
+          <div style="background:#080c1e;border:1px solid #1e3060;border-radius:8px;padding:12px;text-align:center;">
+            <div style="font-size:20px;margin-bottom:4px;">🩻</div>
+            <div style="font-size:13px;font-weight:700;color:#e8e8f0;">Medical Imaging AI</div>
+            <div style="font-size:12px;color:#5878a8;margin-top:4px;">Petabyte-scale DICOM</div>
+          </div>
+          <div style="background:#080c1e;border:1px solid #1e3060;border-radius:8px;padding:12px;text-align:center;">
+            <div style="font-size:20px;margin-bottom:4px;">🔬</div>
+            <div style="font-size:13px;font-weight:700;color:#e8e8f0;">Biomedical RAG</div>
+            <div style="font-size:12px;color:#5878a8;margin-top:4px;">PubMed + clinical docs</div>
+          </div>
+          <div style="background:#080c1e;border:1px solid #1e3060;border-radius:8px;padding:12px;text-align:center;">
+            <div style="font-size:20px;margin-bottom:4px;">💊</div>
+            <div style="font-size:13px;font-weight:700;color:#e8e8f0;">CAR-T Intelligence</div>
+            <div style="font-size:12px;color:#5878a8;margin-top:4px;">Cell therapy workflows</div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+    """, unsafe_allow_html=True)
+
+st.markdown("<div style='height:32px'></div>", unsafe_allow_html=True)
+
+
 # ── SECTION 1: SOLUTIONS ──────────────────────────────────────────────────────
 st.markdown('<div id="solutions"></div>', unsafe_allow_html=True)
 st.markdown("""
@@ -362,22 +450,21 @@ st.markdown("""
   <div class="section-label">Solutions &amp; Use Cases</div>
   <div class="section-title">VAST Foundation Stack<br>for NVIDIA Blueprints.</div>
   <div class="section-sub">
-    Production-ready, open-source E2E pipelines that demonstrate the full power of VAST AI OS —
-    from video intelligence to genomics to enterprise RAG and fraud detection.
+    Production-ready, open-source E2E pipelines — starting with Life Sciences. Scroll down for Financial Services, Smart Cities, Media, and Defense.
   </div>
 </div>
 """, unsafe_allow_html=True)
 
 st.markdown("""
 <div style="font-size:14px;font-weight:700;letter-spacing:2px;color:#00c2e0;text-transform:uppercase;padding:0 0 8px 0;">
-  VAST Foundation Stack for NVIDIA Blueprints
+  🧬 VAST Foundation Stack for NVIDIA Blueprints — Life Sciences
 </div>
 """, unsafe_allow_html=True)
-tab1, tab2, tab_genomics, tab_fraud = st.tabs([
-    "🎥  Video Search & Summarization",
-    "📄  Research Assistant",
+tab_genomics, tab5, tab6, tab7 = st.tabs([
     "🧬  Genomic RAG Engine",
-    "🛡️  Transaction Fraud Detection",
+    "🧬  CAR-T Intelligence",
+    "🩻  Imaging Intelligence",
+    "🔬  Biomedical RAG",
 ])
 
 st.markdown("""
@@ -398,34 +485,26 @@ tab3, tab4 = st.tabs([
 
 st.markdown("""
 <div style="font-size:12px;font-weight:700;letter-spacing:2px;color:#00b4d8;text-transform:uppercase;padding:16px 0 6px 0;">
-  🧬 Life Sciences & Healthcare
-</div>
-""", unsafe_allow_html=True)
-tab5, tab6, tab7 = st.tabs([
-    "🧬  CAR-T Intelligence",
-    "🩻  Imaging Intelligence",
-    "🔬  Biomedical RAG",
-])
-
-st.markdown("""
-<div style="font-size:12px;font-weight:700;letter-spacing:2px;color:#00b4d8;text-transform:uppercase;padding:16px 0 6px 0;">
   🏦 Financial Services
 </div>
 """, unsafe_allow_html=True)
-tab8, tab9, tab10, tab11 = st.tabs([
+tab8, tab9, tab10, tab11, tab_fraud = st.tabs([
     "📄  Document RAG",
     "🏦  Fraud Detection",
     "🔐  Data Classification",
     "📊  Observability",
+    "🛡️  Transaction Fraud Detection",
 ])
 
 st.markdown("""
 <div style="font-size:12px;font-weight:700;letter-spacing:2px;color:#00b4d8;text-transform:uppercase;padding:16px 0 6px 0;">
-  ⚙️ Industrial & Defense
+  ⚙️ Industrial, Media & Defense
 </div>
 """, unsafe_allow_html=True)
-tab12, tab13, tab14, tab15, tab16 = st.tabs([
+tab12, tab1, tab2, tab13, tab14, tab15, tab16 = st.tabs([
     "📺  Broadcast & Media",
+    "🎥  Video Search & Summarization",
+    "📄  Research Assistant",
     "🤖  Physical AI & Robotics",
     "🛡️  Defense & ISR",
     "⚡  Energy & Seismic",
