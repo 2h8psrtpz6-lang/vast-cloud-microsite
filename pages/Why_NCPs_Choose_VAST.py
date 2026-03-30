@@ -7,37 +7,6 @@ st.set_page_config(
     initial_sidebar_state="collapsed",
 )
 
-# ── Password Gate (shared session state with main app) ─────────────────────────
-if "authenticated" not in st.session_state:
-    st.session_state.authenticated = False
-
-if not st.session_state.authenticated:
-    st.markdown("""
-    <style>
-    .auth-container {
-        max-width: 420px; margin: 15vh auto; padding: 48px;
-        background: #0a0e1f; border: 1px solid #1a2540;
-        border-radius: 20px; text-align: center;
-    }
-    </style>
-    <div class="auth-container">
-      <div style="font-size:36px;margin-bottom:16px;">⚡</div>
-      <div style="font-size:28px;font-weight:900;color:#e8e8f0;margin-bottom:8px;">VAST AI Factory</div>
-      <div style="font-size:15px;color:#5878a8;margin-bottom:32px;">Enter your access code to continue</div>
-    </div>
-    """, unsafe_allow_html=True)
-    col_l, col_m, col_r = st.columns([1, 2, 1])
-    with col_m:
-        pwd = st.text_input("", placeholder="Access code", type="password", label_visibility="collapsed")
-        if st.button("Enter →", use_container_width=True, type="primary"):
-            if pwd == "vastaios":
-                st.session_state.authenticated = True
-                st.rerun()
-            else:
-                st.error("Incorrect access code.")
-    st.stop()
-
-
 
 st.markdown("""
 <style>
@@ -304,15 +273,45 @@ div[data-testid="stTabs"] button[aria-selected="true"] {
 </style>
 """, unsafe_allow_html=True)
 
+# ── Password Gate (shared session state with main app) ─────────────────────────
+if "authenticated" not in st.session_state:
+    st.session_state.authenticated = False
+
+if not st.session_state.authenticated:
+    st.markdown("""
+    <style>
+    .auth-container {
+        max-width: 420px; margin: 15vh auto; padding: 48px;
+        background: #0a0e1f; border: 1px solid #1a2540;
+        border-radius: 20px; text-align: center;
+    }
+    </style>
+    <div class="auth-container">
+      <div style="font-size:36px;margin-bottom:16px;">⚡</div>
+      <div style="font-size:28px;font-weight:900;color:#e8e8f0;margin-bottom:8px;">VAST AI Factory</div>
+      <div style="font-size:15px;color:#5878a8;margin-bottom:32px;">Enter your access code to continue</div>
+    </div>
+    """, unsafe_allow_html=True)
+    col_l, col_m, col_r = st.columns([1, 2, 1])
+    with col_m:
+        pwd = st.text_input("", placeholder="Access code", type="password", label_visibility="collapsed")
+        if st.button("Enter →", use_container_width=True, type="primary"):
+            if pwd == "vastaios":
+                st.session_state.authenticated = True
+                st.rerun()
+            else:
+                st.error("Incorrect access code.")
+    st.stop()
+
 # Back button
-st.markdown('<a href="/" class="back-btn" style="display:inline-block;padding:10px 20px;background:rgba(0,120,255,0.12);border:1px solid rgba(0,194,224,0.4);border-radius:8px;color:#00c2e0;font-size:13px;font-weight:600;text-decoration:none;margin-bottom:32px;">← Back to VAST AI Factory</a>', unsafe_allow_html=True)
+
 
 # Hero
 st.markdown("""
-<div style="padding:48px 64px 24px;background:radial-gradient(ellipse 80% 50% at 50% 0%,rgba(0,120,255,0.15) 0%,transparent 70%),#0a0a0f;">
-  <div class="label">NVIDIA Cloud Partner Program</div>
-  <div class="big-title">Why NCPs Choose VAST</div>
-  <div class="sub">
+<div style="padding:48px 0 24px;background:radial-gradient(ellipse 80% 50% at 50% 0%,rgba(0,120,255,0.15) 0%,transparent 70%);">
+  <div style="font-size:11px;font-weight:700;letter-spacing:2px;color:#00c2e0;text-transform:uppercase;margin-bottom:12px;">NVIDIA Cloud Partner Program</div>
+  <div style="font-size:clamp(32px,4vw,52px);font-weight:900;letter-spacing:-1.5px;line-height:1.1;margin:0 0 16px;color:#e8e8f0;">Why NCPs Choose VAST</div>
+  <div style="font-size:17px;color:#5878a8;max-width:700px;line-height:1.7;margin:0 0 32px;">
     VAST is the NVIDIA Cloud Partner (NCP) certified data layer powering the world's largest AI clouds — 
     supporting over 3 million GPUs globally. As a NCP, VAST delivers the performance, reliability, economics, 
     and sovereignty required to compete with US-based hyperscalers.
@@ -346,10 +345,10 @@ st.markdown("""
 
 # ── 9 NCP Capabilities ─────────────────────────────────────────────────────────
 st.markdown("""
-<div style="padding:0 64px 16px;">
-  <div class="label">9 Key Capabilities</div>
-  <div class="big-title">Built for the NCP Standard.</div>
-  <div class="sub">Every capability VAST delivers to make NCPs competitive with AWS, Azure, and GCP.</div>
+<div style="padding:0 0 16px;">
+  <div style="font-size:11px;font-weight:700;letter-spacing:2px;color:#00c2e0;text-transform:uppercase;margin-bottom:12px;">9 Key Capabilities</div>
+  <div style="font-size:clamp(28px,4vw,44px);font-weight:900;letter-spacing:-1.5px;line-height:1.1;margin:0 0 12px;color:#e8e8f0;">Built for the NCP Standard.</div>
+  <div style="font-size:16px;color:#5878a8;max-width:700px;line-height:1.7;">Every capability VAST delivers to make NCPs competitive with AWS, Azure, and GCP.</div>
 </div>
 """, unsafe_allow_html=True)
 
@@ -486,10 +485,10 @@ for i in range(0, len(caps), 2):
 
 # ── AIOS Stack ────────────────────────────────────────────────────────────────
 st.markdown("""
-<div style="padding:48px 64px 24px;">
-  <div class="label">Platform Architecture</div>
-  <div class="big-title">The VAST AI Operating System</div>
-  <div class="sub">Just as Windows manages hardware for desktops, VAST provides the underlying device drivers and infrastructure layer to make massive GPU clusters usable.</div>
+<div style="padding:48px 0 24px;">
+  <div style="font-size:11px;font-weight:700;letter-spacing:2px;color:#00c2e0;text-transform:uppercase;margin-bottom:12px;">Platform Architecture</div>
+  <div style="font-size:clamp(28px,4vw,44px);font-weight:900;letter-spacing:-1.5px;line-height:1.1;margin:0 0 12px;color:#e8e8f0;">The VAST AI Operating System</div>
+  <div style="font-size:16px;color:#5878a8;max-width:700px;line-height:1.7;">Just as Windows manages hardware for desktops, VAST provides the underlying device drivers and infrastructure layer to make massive GPU clusters usable.</div>
 </div>
 """, unsafe_allow_html=True)
 
@@ -633,10 +632,10 @@ st.markdown("""
 
 # ── KV Cache ───────────────────────────────────────────────────────────────────
 st.markdown("""
-<div style="padding:48px 64px 0;">
-  <div class="label">Future-Proofing</div>
-  <div class="big-title">Win the Race to Real-Time Inference</div>
-  <div class="sub">The next wave of AI is inference and agentic workflows. VAST and NVIDIA solve the GPU Memory Wall together — giving NCPs superior inference economics vs. hyperscalers.</div>
+<div style="padding:48px 0 0;">
+  <div style="font-size:11px;font-weight:700;letter-spacing:2px;color:#00c2e0;text-transform:uppercase;margin-bottom:12px;">Future-Proofing</div>
+  <div style="font-size:clamp(28px,4vw,44px);font-weight:900;letter-spacing:-1.5px;line-height:1.1;margin:0 0 12px;color:#e8e8f0;">Win the Race to Real-Time Inference</div>
+  <div style="font-size:16px;color:#5878a8;max-width:700px;line-height:1.7;">The next wave of AI is inference and agentic workflows. VAST and NVIDIA solve the GPU Memory Wall together — giving NCPs superior inference economics vs. hyperscalers.</div>
 </div>
 <div style="padding:0 64px 64px;">
   <div style="display:grid;grid-template-columns:1fr 1fr;gap:24px;">
