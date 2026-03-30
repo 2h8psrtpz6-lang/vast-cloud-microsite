@@ -8,6 +8,41 @@ st.set_page_config(
     initial_sidebar_state="collapsed",
 )
 
+# ── Password Gate ──────────────────────────────────────────────────────────────
+if "authenticated" not in st.session_state:
+    st.session_state.authenticated = False
+
+if not st.session_state.authenticated:
+    st.markdown("""
+    <style>
+    .auth-container {
+        max-width: 420px; margin: 15vh auto; padding: 48px;
+        background: #0a0e1f; border: 1px solid #1a2540;
+        border-radius: 20px; text-align: center;
+    }
+    .auth-title { font-size: 28px; font-weight: 900; color: #e8e8f0; margin-bottom: 8px; }
+    .auth-sub { font-size: 15px; color: #5878a8; margin-bottom: 32px; }
+    </style>
+    <div class="auth-container">
+      <div style="font-size:36px;margin-bottom:16px;">⚡</div>
+      <div class="auth-title">VAST AI Factory</div>
+      <div class="auth-sub">Enter your access code to continue</div>
+    </div>
+    """, unsafe_allow_html=True)
+
+    col_l, col_m, col_r = st.columns([1, 2, 1])
+    with col_m:
+        pwd = st.text_input("", placeholder="Access code", type="password", label_visibility="collapsed")
+        if st.button("Enter →", use_container_width=True, type="primary"):
+            if pwd == "vastaios":
+                st.session_state.authenticated = True
+                st.rerun()
+            else:
+                st.error("Incorrect access code.")
+    st.stop()
+
+
+
 
 # ── CSS ────────────────────────────────────────────────────────────────────────
 st.markdown("""
@@ -300,7 +335,7 @@ st.markdown("""
     <span class="hero-badge-dot"></span>
     VAST AI Factory · Public &amp; Private Cloud
   </div>
-  <h1>VAST AI Factory for<br>Public &amp; Private Cloud</h1>
+  <h1>VAST AI Factory for<br>Hybrid Cloud</h1>
   <p class="hero-sub">
     As VAST consolidates AI demand across enterprise tenants, VAST provides
     the foundational Operating System for AI — scaling from 25,000 cameras today
