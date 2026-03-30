@@ -342,9 +342,9 @@ st.markdown("""
   </div>
   <h1>VAST AI Factory for<br>Hybrid Cloud</h1>
   <p class="hero-sub">
-    As VAST consolidates AI demand across enterprise tenants, VAST provides
-    the foundational Operating System for AI — scaling from 25,000 cameras today
-    to 500,000+ camera deployments, with real-time agentic intelligence at every layer.
+    The unified data platform for NVIDIA-certified AI clouds. From video intelligence
+    to enterprise RAG — VAST delivers the storage, database, and compute foundation
+    for public cloud providers, private AI factories, and NCPs worldwide.
   </p>
   <div class="hero-ctas">
     <a href="#solutions" class="btn-primary">Explore Solutions</a>
@@ -353,12 +353,33 @@ st.markdown("""
 </div>
 """, unsafe_allow_html=True)
 
-# NCP button
-col_ncp_l, col_ncp_m, col_ncp_r = st.columns([2, 1, 2])
-with col_ncp_m:
-    if st.button("Why NCPs Choose VAST →", use_container_width=True, key="ncp_btn"):
+# NCP button — styled to match hero CTAs
+st.markdown("""
+<style>
+div[data-testid="stButton"] > button[kind="secondary"] {
+    background: transparent !important;
+    border: 1px solid rgba(0,194,224,0.5) !important;
+    color: #00c2e0 !important;
+    font-size: 16px !important;
+    font-weight: 600 !important;
+    padding: 14px 36px !important;
+    border-radius: 8px !important;
+    margin: 0 auto !important;
+    display: block !important;
+    transition: all 0.2s !important;
+}
+div[data-testid="stButton"] > button[kind="secondary"]:hover {
+    background: rgba(0,120,255,0.1) !important;
+    border-color: #00c2e0 !important;
+}
+</style>
+""", unsafe_allow_html=True)
+col_l, col_m, col_r = st.columns([3, 2, 3])
+with col_m:
+    if st.button("Why NCPs Choose VAST →", use_container_width=True, key="ncp_btn", type="secondary"):
         st.session_state.show_ncp = True
         st.rerun()
+st.markdown("<div style='height:40px'></div>", unsafe_allow_html=True)
 
 # ── SECTION 1: SOLUTIONS ──────────────────────────────────────────────────────
 st.markdown('<div id="solutions"></div>', unsafe_allow_html=True)
