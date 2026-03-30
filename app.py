@@ -348,12 +348,18 @@ st.markdown("""
   </p>
   <div class="hero-ctas">
     <a href="#solutions" class="btn-primary">Explore Solutions</a>
+    <a href="?show_ncp=true" class="btn-secondary" target="_self">Why NCPs Choose VAST →</a>
     <a href="#entry" class="btn-secondary">Choose Your Entry Point</a>
   </div>
 </div>
 """, unsafe_allow_html=True)
 
-
+# ── NCP routing via query params ───────────────────────────────────────────────
+_qp = st.query_params
+if _qp.get("show_ncp") == "true":
+    st.session_state.show_ncp = True
+    st.query_params.clear()
+    st.rerun()
 
 # ── SECTION 1: SOLUTIONS ──────────────────────────────────────────────────────
 st.markdown('<div id="solutions"></div>', unsafe_allow_html=True)
