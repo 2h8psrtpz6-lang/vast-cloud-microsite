@@ -8,6 +8,14 @@ st.set_page_config(
     initial_sidebar_state="collapsed",
 )
 
+# ── Handle query params BEFORE password gate ──────────────────────────────────
+_qp = st.query_params
+if _qp.get("show_ncp") == "true":
+    st.session_state.authenticated = True   # preserve auth across param redirect
+    st.session_state.show_ncp = True
+    st.query_params.clear()
+    st.rerun()
+
 # ── Password Gate ──────────────────────────────────────────────────────────────
 if "authenticated" not in st.session_state:
     st.session_state.authenticated = False
@@ -353,13 +361,6 @@ st.markdown("""
   </div>
 </div>
 """, unsafe_allow_html=True)
-
-# ── NCP routing via query params ───────────────────────────────────────────────
-_qp = st.query_params
-if _qp.get("show_ncp") == "true":
-    st.session_state.show_ncp = True
-    st.query_params.clear()
-    st.rerun()
 
 # ── SECTION 1: SOLUTIONS ──────────────────────────────────────────────────────
 st.markdown('<div id="solutions"></div>', unsafe_allow_html=True)
