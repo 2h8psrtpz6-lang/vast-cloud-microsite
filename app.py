@@ -48,6 +48,7 @@ if "show_ncp" not in st.session_state:
 
 
 
+
 # ── CSS ────────────────────────────────────────────────────────────────────────
 st.markdown("""
 <style>
@@ -347,11 +348,17 @@ st.markdown("""
   </p>
   <div class="hero-ctas">
     <a href="#solutions" class="btn-primary">Explore Solutions</a>
-    <a href="?ncp=1" class="btn-secondary" target="_self">Why NCPs Choose VAST →</a>
     <a href="#entry" class="btn-secondary">Choose Your Entry Point</a>
   </div>
 </div>
 """, unsafe_allow_html=True)
+
+# NCP button
+col_ncp_l, col_ncp_m, col_ncp_r = st.columns([2, 1, 2])
+with col_ncp_m:
+    if st.button("Why NCPs Choose VAST →", use_container_width=True, key="ncp_btn"):
+        st.session_state.show_ncp = True
+        st.rerun()
 
 # ── SECTION 1: SOLUTIONS ──────────────────────────────────────────────────────
 st.markdown('<div id="solutions"></div>', unsafe_allow_html=True)
@@ -2174,10 +2181,9 @@ with col3:
     st.link_button("Browse Blueprints →", "https://github.com/vast-data/cosmos-labs", use_container_width=True)
 
 # ── NCP Page ──────────────────────────────────────────────────────────────────
-_params = st.query_params
-if _params.get("ncp") == "1":
+if st.session_state.show_ncp:
     if st.button("← Back to VAST AI Factory", key="back_ncp"):
-        st.query_params.clear()
+        st.session_state.show_ncp = False
         st.rerun()
     st.markdown("<div style='height:16px'></div>", unsafe_allow_html=True)
 
@@ -2197,23 +2203,23 @@ if _params.get("ncp") == "1":
 
     # ── Stats row ──────────────────────────────────────────────────────────────────
     st.markdown("""
-    <div style="padding:0 64px 48px;">
+    <div style="padding:0 0 48px;">
       <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:2px;background:#0f1535;border-radius:16px;overflow:hidden;border:1px solid #1a2540;">
         <div style="background:#080c18;padding:36px 28px;text-align:center;">
-          <div class="stat-big">3M+</div>
-          <div class="stat-label">GPUs supported globally<br>across NCP deployments</div>
+          <div style="font-size:clamp(36px,4vw,56px);font-weight:900;letter-spacing:-2px;background:linear-gradient(135deg,#fff,#00c2e0);-webkit-background-clip:text;-webkit-text-fill-color:transparent;line-height:1;">3M+</div>
+          <div style="font-size:13px;color:#5878a8;margin-top:8px;line-height:1.5;">GPUs supported globally<br>across NCP deployments</div>
         </div>
         <div style="background:#080c18;padding:36px 28px;text-align:center;">
-          <div class="stat-big">3.9Gb/s</div>
-          <div class="stat-label">Per Vera Rubin GPU<br>Exceeds NCP max performance</div>
+          <div style="font-size:clamp(36px,4vw,56px);font-weight:900;letter-spacing:-2px;background:linear-gradient(135deg,#fff,#00c2e0);-webkit-background-clip:text;-webkit-text-fill-color:transparent;line-height:1;">3.9Gb/s</div>
+          <div style="font-size:13px;color:#5878a8;margin-top:8px;line-height:1.5;">Per Vera Rubin GPU<br>Exceeds NCP max performance</div>
         </div>
         <div style="background:#080c18;padding:36px 28px;text-align:center;">
-          <div class="stat-big">99.999%</div>
-          <div class="stat-label">Uptime SLA<br>Job failure rate reduced 90%</div>
+          <div style="font-size:clamp(36px,4vw,56px);font-weight:900;letter-spacing:-2px;background:linear-gradient(135deg,#fff,#00c2e0);-webkit-background-clip:text;-webkit-text-fill-color:transparent;line-height:1;">99.999%</div>
+          <div style="font-size:13px;color:#5878a8;margin-top:8px;line-height:1.5;">Uptime SLA<br>Job failure rate reduced 90%</div>
         </div>
         <div style="background:#080c18;padding:36px 28px;text-align:center;">
-          <div class="stat-big">2.12×</div>
-          <div class="stat-label">Data reduction avg<br>Across global fleet</div>
+          <div style="font-size:clamp(36px,4vw,56px);font-weight:900;letter-spacing:-2px;background:linear-gradient(135deg,#fff,#00c2e0);-webkit-background-clip:text;-webkit-text-fill-color:transparent;line-height:1;">2.12×</div>
+          <div style="font-size:13px;color:#5878a8;margin-top:8px;line-height:1.5;">Data reduction avg<br>Across global fleet</div>
         </div>
       </div>
     </div>
@@ -2579,7 +2585,6 @@ if _params.get("ncp") == "1":
     """, unsafe_allow_html=True)
 
     st.stop()
-
 
 # ── FOOTER ─────────────────────────────────────────────────────────────────────
 st.markdown("""
