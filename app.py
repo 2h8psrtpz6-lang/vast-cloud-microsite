@@ -8,14 +8,6 @@ st.set_page_config(
     initial_sidebar_state="collapsed",
 )
 
-# ── Handle query params BEFORE password gate ──────────────────────────────────
-_qp = st.query_params
-if _qp.get("show_ncp") == "true":
-    st.session_state.authenticated = True   # preserve auth across param redirect
-    st.session_state.show_ncp = True
-    st.query_params.clear()
-    st.rerun()
-
 # ── Password Gate ──────────────────────────────────────────────────────────────
 if "authenticated" not in st.session_state:
     st.session_state.authenticated = False
@@ -356,11 +348,37 @@ st.markdown("""
   </p>
   <div class="hero-ctas">
     <a href="#solutions" class="btn-primary">Explore Solutions</a>
-    <a href="?show_ncp=true" class="btn-secondary" target="_self">Why NCPs Choose VAST →</a>
     <a href="#entry" class="btn-secondary">Choose Your Entry Point</a>
   </div>
 </div>
 """, unsafe_allow_html=True)
+
+# NCP Button — pure st.button, no URL change, session_state safe
+st.markdown("""
+<style>
+div[data-testid="stMainBlockContainer"] div.ncp-btn-wrap button {
+    background: transparent !important;
+    border: 1px solid rgba(255,255,255,0.25) !important;
+    color: #e8e8f0 !important;
+    font-weight: 600 !important;
+    font-size: 15px !important;
+    padding: 14px 28px !important;
+    border-radius: 8px !important;
+    margin-top: -20px !important;
+}
+div[data-testid="stMainBlockContainer"] div.ncp-btn-wrap button:hover {
+    border-color: #00c2e0 !important;
+    color: #00c2e0 !important;
+}
+</style>
+""", unsafe_allow_html=True)
+_c1, _c2, _c3 = st.columns([2, 1, 2])
+with _c2:
+    st.markdown('<div class="ncp-btn-wrap">', unsafe_allow_html=True)
+    if st.button("Why NCPs Choose VAST →", key="ncp_hero_btn", use_container_width=True):
+        st.session_state.show_ncp = True
+        st.rerun()
+    st.markdown('</div>', unsafe_allow_html=True)
 
 # ── SECTION 1: SOLUTIONS ──────────────────────────────────────────────────────
 st.markdown('<div id="solutions"></div>', unsafe_allow_html=True)
