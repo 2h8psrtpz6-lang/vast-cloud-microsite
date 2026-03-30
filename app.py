@@ -101,7 +101,7 @@ footer { display: none !important; }
 .nav-cta:hover { opacity: 0.85; }
 
 .hero {
-    min-height: 90vh;
+    min-height: 60vh;
     display: flex; flex-direction: column;
     align-items: center; justify-content: center;
     text-align: center;
@@ -353,33 +353,7 @@ st.markdown("""
 </div>
 """, unsafe_allow_html=True)
 
-# NCP button — styled to match hero CTAs
-st.markdown("""
-<style>
-div[data-testid="stButton"] > button[kind="secondary"] {
-    background: transparent !important;
-    border: 1px solid rgba(0,194,224,0.5) !important;
-    color: #00c2e0 !important;
-    font-size: 16px !important;
-    font-weight: 600 !important;
-    padding: 14px 36px !important;
-    border-radius: 8px !important;
-    margin: 0 auto !important;
-    display: block !important;
-    transition: all 0.2s !important;
-}
-div[data-testid="stButton"] > button[kind="secondary"]:hover {
-    background: rgba(0,120,255,0.1) !important;
-    border-color: #00c2e0 !important;
-}
-</style>
-""", unsafe_allow_html=True)
-col_l, col_m, col_r = st.columns([3, 2, 3])
-with col_m:
-    if st.button("Why NCPs Choose VAST →", use_container_width=True, key="ncp_btn", type="secondary"):
-        st.session_state.show_ncp = True
-        st.rerun()
-st.markdown("<div style='height:40px'></div>", unsafe_allow_html=True)
+
 
 # ── SECTION 1: SOLUTIONS ──────────────────────────────────────────────────────
 st.markdown('<div id="solutions"></div>', unsafe_allow_html=True)
